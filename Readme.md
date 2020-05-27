@@ -35,6 +35,13 @@ This sample requires a device that is compatible with ARKit 1 on iOS.
 There are two main approaches for identifying the physical location of tapped point:
 
 * **ARSceneView.ARScreenToLocation** - uses plane detection provided by ARKit to determine where _in the real world_ the tapped point is.
+ARScreenToLocation will only return a result if ARCore is able to detect a plane/surface at the tapped location.
+
+![Image](https://user-images.githubusercontent.com/29742178/82461365-35a0cf00-9a6f-11ea-83e5-445698dd590e.png)
+
+In the image, the green tree is a real-world object, and the yellow ray represents what is at the tapped screen location.
+With ARScreenToLocation, if there is a physical object, the real-world location of the tapped real-world object is returned. If there is no object, or ARCore/ARKit fails to detect the object, nothing is returned. When you use the existing non-AR ScreenToLocation method, the location of the virtual scene object at the tapped point is returned. In the illustration above, that ends up being the basemap, which is very far away from the tree.
+
 * **SceneView.ScreenToLocation** - determines where the tapped point is _in the virtual scene_. This is problematic when the opacity is set to 0 and you can't see where on the scene that is. Real-world objects aren't accounted for by the scene view's calculation to find the tapped location; for example tapping on a tree might result in a point on the basemap many meters away behind the tree.
 
 This sample only uses the `ARScreenToLocation` approach, as it is the only way to get accurate positions for features not directly on the ground in real-scale AR.
