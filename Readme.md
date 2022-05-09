@@ -14,7 +14,7 @@ Anonymous users can only retrieve data with a time resolution of 10 seconds.
 ![I M G 3284](Images/IMG_3284.PNG)
 
 ## Requirements
-[ArcGIS Runtime ARToolkit 100.13.0](https://www.nuget.org/packages/Esri.ArcGISRuntime.ARToolkit/)
+[ArcGIS Runtime ARToolkit 100.14.0](https://www.nuget.org/packages/Esri.ArcGISRuntime.ARToolkit/)
 
 [Xamarin.iOS](https://docs.microsoft.com/it-it/xamarin/ios/)
 

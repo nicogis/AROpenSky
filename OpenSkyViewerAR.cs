@@ -153,23 +153,26 @@ namespace StudioAT.Mobile.iOS.AROpenSky
             {
                 //set license Runtime lite
                 string licenseRT = "";
-                ArcGISRuntimeEnvironment.SetLicense(licenseRT); 
+                ArcGISRuntimeEnvironment.SetLicense(licenseRT);
 
                 // Create and add the scene.
-                arView.Scene = new Scene(Basemap.CreateImagery());
+                
+                arView.Scene = new Scene(Basemap.CreateImagery()); //BasemapStyle.ArcGISImageryStandard
 
                 // Add the location data source to the AR view.
                 arView.LocationDataSource = locationSource;
 
                 // Create and add the elevation source.
                 elevationSource = new ArcGISTiledElevationSource(new Uri("https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"));
+                await elevationSource.LoadAsync();
                 elevationSurface = new Surface();
                 elevationSurface.ElevationSources.Add(elevationSource);
+                await elevationSurface.LoadAsync();
                 arView.Scene.BaseSurface = elevationSurface;
 
                 // Configure the surface for AR: no navigation constraint and hidden by default.
                 elevationSurface.NavigationConstraint = NavigationConstraint.None;
-                //elevationSurface.Opacity = 0;
+                
 
                 // Configure scene view display for real-scale AR: no space effect or atmosphere effect.
                 arView.SpaceEffect = SpaceEffect.None;
@@ -402,7 +405,7 @@ namespace StudioAT.Mobile.iOS.AROpenSky
 
 
                         // distance using only x,y of device and camera
-                        geodeticDistanceResult = GeometryEngine.DistanceGeodetic(arView.Camera.Location, mapPoint, LinearUnits.Kilometers, (AngularUnit)Unit.FromUnitId(9102), GeodeticCurveType.Geodesic);
+                        geodeticDistanceResult = GeometryEngine.DistanceGeodetic(arView.Camera.Location, mapPoint, LinearUnits.Kilometers, (AngularUnit)Unit.FromWkid(9102), GeodeticCurveType.Geodesic);
 
                         devices.Add(new Device(mapPoint, trueTrack.Value, 0d, icao24, j[2].ToString(), geodeticDistanceResult.Distance, callsign, time_position, last_contact));
                     }

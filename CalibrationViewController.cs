@@ -81,7 +81,7 @@ namespace StudioAT.Mobile.iOS.AROpenSky
                 Text = $"Buffer: {(int)locationSource.DistanceBuffer}km"
             };
 
-            bufferSlider = new UISlider { MinValue = 50, MaxValue = 500, Value = this.locationSource.DistanceBuffer };
+            bufferSlider = new UISlider { MinValue = 25, MaxValue = 500, Value = this.locationSource.DistanceBuffer };
             bufferSlider.TranslatesAutoresizingMaskIntoConstraints = false;
             formContainer.AddArrangedSubview(GetRowStackView(new UIView[] { bufferSlider, bufferLabel }));
 
