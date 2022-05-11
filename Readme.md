@@ -1,7 +1,7 @@
 ﻿# Augmented Reality OpenSky
 
 ## Description
-This augmented reality proof of concept allows you to visualize airplanes in real time in the radius (extent) chosen among preferences from the user buffer using a web service [OpenSky](https://opensky-network.org/apidoc/rest.html) which points the airplanes' positions in real time. 
+This augmented reality proof of concept allows you to visualize airplanes in real time in the radius (extent) chosen among preferences from the user buffer using a web service [OpenSky](https://openskynetwork.github.io/opensky-api/rest.html) which points the airplanes' positions in real time. 
 In case, you could use any other web service as long as it gives you the same information.
 
 If you register on [OpenSky](https://opensky-network.org/) you can set user and password so you can retrieve data with a time resolution of 5 seconds.
